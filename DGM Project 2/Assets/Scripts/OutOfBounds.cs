@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OutOfBounds : MonoBehaviour
 {
-    public float topBounds = 30f;
-    public float lowerBounds = -10f;
+    public float topBounds = -30f;
+    public float lowerBounds = 10f;
 
     void Awake()
     {

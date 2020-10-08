@@ -40,9 +40,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -12);
         }
-        if (transform.position.z > -6)
+        if (transform.position.z > -4)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -6);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -4);
         }
 
     }

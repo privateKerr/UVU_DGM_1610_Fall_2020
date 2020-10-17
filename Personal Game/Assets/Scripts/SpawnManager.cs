@@ -6,9 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] obstaclePrefabs;
     public int obstacleIndex;
-    public float xRange = 10f;
-    public float spawnPosZ = 20f;
-    public float spawnDelay = 3f;
+    private float xRange = 10f;
+    private float spawnPosZ = 20f;
+    private float spawnDelay = 3f;
     public float spawnInterval;
 
 
@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnRandomObstacle()
     {
         // Generate random obstacle index and random spawn location
-        Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 0, spawnPosZ);
+        Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 1, spawnPosZ);
         spawnInterval = Random.Range(1f, 3f);
         int obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
         Debug.Log(obstacleIndex);

@@ -10,7 +10,7 @@ public class RepeatRoad : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatLength = GetComponent<BoxCollider>().size.z / 2;
+        repeatLength = GetComponent<BoxCollider>().size.z * 2;
     }
 
     // Update is called once per frame

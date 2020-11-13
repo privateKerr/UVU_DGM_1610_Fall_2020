@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float hInput;
     public float vInput;
     public float xRange = 8f;
+
+    public bool hasPowerUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,4 +48,15 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("PowerUp"))
+        {
+            hasPowerUp = true;
+            Debug.Log("PowerUp" + hasPowerUp);
+            Destroy(collider.gameObject);
+        }
+    }
+
 }

@@ -517,6 +517,7 @@ MonoBehaviour:
   hInput: 0
   vInput: 0
   xRange: 10
+  hasPowerUp: 0
 --- !u!65 &1343409349
 BoxCollider:
   m_ObjectHideFlags: 0

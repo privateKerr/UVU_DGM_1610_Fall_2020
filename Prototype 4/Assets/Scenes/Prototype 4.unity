@@ -152,6 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2475107036228546690, guid: 391b95f50157949348234f2d265a00f0,
     type: 3}
+  powerUpPrefab: {fileID: 3194403295166141133, guid: dc9be2492d78040e1be411e851ee85e8,
+    type: 3}
+  enemyCount: 0
+  waveNumber: 1
 --- !u!4 &116332991
 Transform:
   m_ObjectHideFlags: 0
@@ -630,7 +634,7 @@ MonoBehaviour:
   focalPoint: {fileID: 1953419733}
   hasPowerUp: 0
   speed: 20
-  powerUpIndicator: {fileID: 1742899641471652, guid: 923deea38dc6a8843b15db7638919c1e,
+  powerUpIndicator: {fileID: 1758629138285362, guid: 11a653b9169986c4f9436a3002fb4516,
     type: 3}
 --- !u!1 &1953419733
 GameObject:
@@ -687,7 +691,7 @@ PrefabInstance:
     - target: {fileID: 3194403295165791241, guid: dc9be2492d78040e1be411e851ee85e8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8723351
+      value: -0.219
       objectReference: {fileID: 0}
     - target: {fileID: 3194403295165791241, guid: dc9be2492d78040e1be411e851ee85e8,
         type: 3}
@@ -697,7 +701,7 @@ PrefabInstance:
     - target: {fileID: 3194403295165791241, guid: dc9be2492d78040e1be411e851ee85e8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.1940007
+      value: 5.782
       objectReference: {fileID: 0}
     - target: {fileID: 3194403295165791241, guid: dc9be2492d78040e1be411e851ee85e8,
         type: 3}

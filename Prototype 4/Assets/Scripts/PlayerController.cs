@@ -28,9 +28,10 @@ public class PlayerController : MonoBehaviour
     {
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
-        powerUpIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+        powerUpIndicator.transform.position = transform.position + new Vector3(0,-.6f, 0);
     }
 
+    //Gives player PowerUp indicator
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("PowerUp"))
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Makes it so powerUp pushes enemy away from player
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy")&& hasPowerUp)
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Puts power up on a timer
     IEnumerator PowerUpCountDown()
     {
         yield return new WaitForSeconds(7); hasPowerUp = false;

@@ -7,14 +7,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public float hInput;
     public float vInput;
-    public float xRange = 8f;
+    public float xRange = 9;
 
     public bool hasPowerUp;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,6 +17,7 @@ public class PlayerController : MonoBehaviour
         // Gives player side to side movement
         hInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * hInput * Time.deltaTime * speed);
+
         // Gives player forward movement
         vInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * vInput * Time.deltaTime * speed);
@@ -51,12 +47,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        //Shows that the player has a power up
         if (collider.gameObject.CompareTag("PowerUp"))
         {
             hasPowerUp = true;
             Debug.Log("PowerUp" + hasPowerUp);
             Destroy(collider.gameObject);
         }
+    }
+
+    //Puts powerUp on a countdown
+    IEnumerator PowerUpCountDown()
+    {
+        yield return new WaitForSeconds(7); hasPowerUp = false;
     }
 
 }

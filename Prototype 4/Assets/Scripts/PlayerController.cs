@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour
     {
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
-        powerUpIndicator.transform.position = transform.position + new Vector3(0,-.5f, 0);
+        powerUpIndicator.transform.position = transform.position + new Vector3(0,-.3f, 0);
     }
 
-    //Gives player PowerUp indicator
+    //Gives player powerUp 
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("PowerUp"))

@@ -290,7 +290,11 @@ MonoBehaviour:
   - {fileID: 8482372552608593481, guid: 3f7e7a8196c294781b17ed50b4ea37d1, type: 3}
   - {fileID: 2800584393050951555, guid: 3c627405babbf402f8ea692b4cce5a05, type: 3}
   - {fileID: 0}
+  healthPrefab: {fileID: 7823553578974617645, guid: 6a97255f1e3444a03a7155080c2edd9a,
+    type: 3}
   obstacleIndex: 0
+  enemyCount: 0
+  waveNumber: 5
   spawnInterval: 0
 --- !u!4 &482582579
 Transform:

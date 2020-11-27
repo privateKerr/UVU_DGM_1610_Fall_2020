@@ -18,13 +18,12 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         Invoke("SpawnRandomObstacle", spawnDelay);
-        SpawnEnemyWave(waveNumber);
     }
 
     void SpawnRandomObstacle()
     {
         // Generate random obstacle 
-        spawnInterval = Random.Range(1f, 3f);
+        spawnInterval = Random.Range(1f, 2f);
         int obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
         Debug.Log(obstacleIndex);
         Invoke("SpawnRandomObstacle", spawnInterval);
@@ -33,28 +32,11 @@ public class SpawnManager : MonoBehaviour
         Instantiate(obstaclePrefabs[obstacleIndex], SpawnRandomPosition(), obstaclePrefabs[obstacleIndex].transform.rotation);
     } 
 
-    void Update()
-    {
-        enemyCount = FindObjectsOfType<Obstacle>().Length;
-        if(enemyCount == 0)
-        {
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
-            Instantiate(healthPrefab, SpawnRandomPosition(), healthPrefab.transform.rotation);
-        }
-    }
 
-    void SpawnEnemyWave(int enemiesToSpawn)
-    {
-
-    }
-
+    //Random spawn position
     private Vector3 SpawnRandomPosition()
     {
         Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 1, spawnPosZ);
         return spawnPos;
     }
-
-
-
 }

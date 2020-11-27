@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 484496137797476085}
   - component: {fileID: 6270357780353377881}
   - component: {fileID: 4382401552039664551}
-  - component: {fileID: 5497537922028890648}
   - component: {fileID: 2373747595631034517}
   - component: {fileID: 4013629234446839133}
   - component: {fileID: -8621761762401251501}
   - component: {fileID: 1279501804715474224}
+  - component: {fileID: -4226915382431658459}
   m_Layer: 0
   m_Name: Obstacle 2
   m_TagString: Obstacle
@@ -84,19 +84,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5497537922028890648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800584393050951555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a7ea67d84cd140b0a67c2376385cc9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
 --- !u!114 &2373747595631034517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +138,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4226915382431658459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800584393050951555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6d5b83ff98e446c8e50b55b5ff1003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15

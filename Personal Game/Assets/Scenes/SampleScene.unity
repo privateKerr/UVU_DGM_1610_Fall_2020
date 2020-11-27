@@ -294,7 +294,7 @@ MonoBehaviour:
     type: 3}
   obstacleIndex: 0
   enemyCount: 0
-  waveNumber: 5
+  waveNumber: 1
   spawnInterval: 0
 --- !u!4 &482582579
 Transform:

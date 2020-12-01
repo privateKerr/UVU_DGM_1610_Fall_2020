@@ -121,4 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2a5bfc8f62c41e8ad989c97bd3886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
+  playerGoal: {fileID: 4087092622420424255, guid: 8974edbc8856d46ca929cb8d470aa397,
+    type: 3}

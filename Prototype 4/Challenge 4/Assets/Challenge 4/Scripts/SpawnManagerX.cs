@@ -14,8 +14,6 @@ public class SpawnManagerX : MonoBehaviour
     public int enemyCount;
     public int waveCount = 0;
 
-    public ParticleSystem boostEffect;
-
 
     public GameObject player; 
 

@@ -17,7 +17,7 @@ public class Target : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetRb = GetComponent<Rigidbody>();
+        targetRb = GetComponent<Rigidbody>(); 
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque());
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -28,15 +28,22 @@ public class Target : MonoBehaviour
     //Destroys target, updates score, and creates particle explosion on mouse click
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-        gameManager.UpdateScore(pointValue);
+        if (gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            gameManager.UpdateScore(pointValue);
+        }
     }
 
     //Destroys target when it passes through bottom barrier
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
     }
 
     //Gives target random force upward when it spawns

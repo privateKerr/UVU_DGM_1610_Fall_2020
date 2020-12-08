@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
     private int score;
+    private int damage;
     private int health;
     private float spawnInterval;
     public bool isGameActive;
@@ -20,8 +21,12 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
         StartCoroutine(SpawnObstacle());
+        score = 0;
+        health = 100;
         UpdateScore(0);
+        UpdateHealth(100);
     }
+
 
     IEnumerator SpawnObstacle()
     {
@@ -34,14 +39,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void UpdateScore(int scoreToAdd)
+    IEnumerator SpawnHealth()
     {
+        yield return new WaitForSeconds(25);
+    }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        scoreText.text = "Score: " + score;
         score += scoreToAdd;
     }
 
-    void UpdateHealth(int healthTotal)
+    public void UpdateHealth(int healthTotal)
     {
-        health += healthTotal;
+        healthText.text = "Health: " + health;
+        health -= healthTotal;
     }
 
 }

@@ -8,8 +8,14 @@ public class PlayerController : MonoBehaviour
     public float hInput;
     public float vInput;
     public float xRange = 9;
+    public GameManager gameManager;
 
     public bool hasPowerUp;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -47,12 +53,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        //Shows that the player has a power up
-        if (collider.gameObject.CompareTag("PowerUp"))
+        //Player can collide with health boost
+        if (collider.gameObject.CompareTag("Health"))
         {
-            hasPowerUp = true;
-            Debug.Log("PowerUp" + hasPowerUp);
             Destroy(collider.gameObject);
+            gameManager.UpdateHealth(25);
         }
     }
 

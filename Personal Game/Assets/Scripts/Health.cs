@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Health : MonoBehaviour
 {
     public float speed = 15f;
     private float xRange = 10f;
@@ -19,9 +19,8 @@ public class Obstacle : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        if(transform.position.z < -14)
+        if (transform.position.z < -14)
         {
-            gameManager.UpdateScore(25);
             Destroy(gameObject);
         }
     }

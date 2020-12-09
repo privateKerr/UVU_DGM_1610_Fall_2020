@@ -51,20 +51,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider collider)
+
+    private void OnTriggerExit(Collider collider)
     {
-        //Player can collide with health boost
-        if (collider.gameObject.CompareTag("Health"))
+        
+        if (collider.gameObject.CompareTag("Obstacle"))
         {
             Destroy(collider.gameObject);
-            gameManager.UpdateHealth(25);
+            gameManager.UpdateLives(-1);
+            Debug.Log("Collided with obstacle");
         }
+        else if (collider.gameObject.CompareTag("Health"))
+        {
+            Destroy(collider.gameObject);
+            gameManager.UpdateLives(1);
+            Debug.Log("Collided with health");
+        }
+       
     }
-
-    //Puts powerUp on a countdown
-    IEnumerator PowerUpCountDown()
-    {
-        yield return new WaitForSeconds(7); hasPowerUp = false;
-    }
+    
 
 }

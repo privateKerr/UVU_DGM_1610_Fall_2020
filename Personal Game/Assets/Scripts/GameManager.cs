@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> obstacles;
     public GameObject healthPrefab;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI lifeText;
     private int score;
     private int damage;
-    private int health;
+    public int lives;
     private float spawnInterval;
+    private float healthSpawnInterval;
     public bool isGameActive;
 
 
@@ -21,16 +22,17 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
         StartCoroutine(SpawnObstacle());
+        StartCoroutine(SpawnHealth());
         score = 0;
-        health = 100;
+        lives = 3;
         UpdateScore(0);
-        UpdateHealth(100);
+        UpdateLives(0);
     }
 
 
     IEnumerator SpawnObstacle()
     {
-        while (true)
+        while (isGameActive)
         {
             spawnInterval = Random.Range(1f, 2f);
             yield return new WaitForSeconds(spawnInterval);
@@ -41,7 +43,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnHealth()
     {
-        yield return new WaitForSeconds(25);
+        while (isGameActive)
+        {
+            healthSpawnInterval = 25f;
+            yield return new WaitForSeconds(healthSpawnInterval);
+            Instantiate(healthPrefab);
+        }
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -50,10 +57,11 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
     }
 
-    public void UpdateHealth(int healthTotal)
+    public void UpdateLives(int lifeMod)
     {
-        healthText.text = "Health: " + health;
-        health -= healthTotal;
+        lifeText.text = "Lives: " + lives;
+        lives += lifeMod;
+        Debug.Log("Updated health by" + lifeMod);
     }
 
 }

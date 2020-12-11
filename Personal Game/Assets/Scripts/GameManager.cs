@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,12 +11,14 @@ public class GameManager : MonoBehaviour
     public GameObject healthPrefab;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI lifeText;
+    public TextMeshProUGUI gameOverText;
     private int score;
     private int damage;
-    public int lives;
+    private int lives;
     private float spawnInterval;
     private float healthSpawnInterval;
     public bool isGameActive;
+    public Button restartButton;
 
 
     // Start is called before the first frame update
@@ -29,6 +33,13 @@ public class GameManager : MonoBehaviour
         UpdateLives(0);
     }
 
+    private void Update()
+    {
+        if(lives == -1)
+        {
+            GameOver();
+        }
+    }
 
     IEnumerator SpawnObstacle()
     {
@@ -64,4 +75,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Updated health by" + lifeMod);
     }
 
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        isGameActive = false;
+        Destroy(GameObject.Find("Player"));
+        restartButton.gameObject.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

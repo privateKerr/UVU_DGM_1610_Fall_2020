@@ -16,9 +16,9 @@ public class RepeatRoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if (transform.position.z < startPos.z - repeatLength)
+        if (transform.position.z < startPos.z - repeatLength)
         {
             transform.position = startPos;
-        }   
+        }
     }
 }

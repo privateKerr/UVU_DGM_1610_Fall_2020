@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        if(transform.position.z < -14)
+        if (transform.position.z < -14)
         {
             gameManager.UpdateScore(25);
             Destroy(gameObject);

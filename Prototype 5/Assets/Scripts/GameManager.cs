@@ -12,19 +12,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
+    public GameObject titleScreen;
     public bool isGameActive;
     private int score;
 
     // Start is called before the first frame update
     void Start()
     {
-        isGameActive = true;
-        //Starts coroutine to start spawning targets
-        StartCoroutine(SpawnTarget());
 
-        //Sets score as 0 on screen at start of game
-        score = 0;
-        UpdateScore(0);
     }
 
     //Spawns random targets at a set rate
@@ -57,5 +52,21 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame(int difficulty)
+    {
+        isGameActive = true;
+        //Starts coroutine to start spawning targets
+        StartCoroutine(SpawnTarget());
+
+        //Makes difficulty harder based on button pressed
+        spawnRate /= difficulty;
+
+        //Sets score as 0 on screen at start of game
+        score = 0;
+        UpdateScore(0);
+
+        titleScreen.gameObject.SetActive(false);
     }
 }

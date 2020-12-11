@@ -3,7 +3,13 @@ guid: 81416babd55d641a6a65952bb995e97a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthPrefab: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - lifeText: {instanceID: 0}
+  - gameOverText: {instanceID: 0}
+  - restartButton: {instanceID: 0}
+  - explosionSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

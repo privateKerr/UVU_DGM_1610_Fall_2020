@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
     public float hInput;
     public float vInput;
     public float xRange = 9;
-    public GameManager gameManager;
-
+    private GameManager gameManager;
     public bool hasPowerUp;
 
     private void Start()
@@ -70,4 +69,5 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collided with health");
         }
     }
+
 }

@@ -30,7 +30,7 @@ public class Obstacle : MonoBehaviour
     //Random spawn position
     private Vector3 SpawnRandomPosition()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 1, spawnPosZ);
+        Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 0, spawnPosZ);
         return spawnPos;
     }
 

@@ -62,12 +62,15 @@ public class PlayerController : MonoBehaviour
             gameManager.UpdateLives(-1);
             Debug.Log("Collided with obstacle");
         }
-        else if (collider.gameObject.CompareTag("Health"))
+        if (collider.gameObject.CompareTag("Health"))
         {
             Destroy(collider.gameObject);
-            gameManager.UpdateLives(1);
+            gameManager.UpdateLives(+1);
             Debug.Log("Collided with health");
         }
     }
 
+
+
+    
 }

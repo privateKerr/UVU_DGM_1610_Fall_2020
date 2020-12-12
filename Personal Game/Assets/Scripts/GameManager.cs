@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     private int score;
     private int damage;
-    private int lives;
+    public int lives;
     private float spawnInterval = 1.5f;
     private float healthSpawnInterval;
     public bool isGameActive;

@@ -15,24 +15,30 @@ public class GameManager : MonoBehaviour
     private int score;
     private int damage;
     private int lives;
-    private float spawnInterval;
+    private float spawnInterval = 1.5f;
     private float healthSpawnInterval;
     public bool isGameActive;
     public Button restartButton;
+    public GameObject player;
+    public GameObject titleScreen;
 
 
-    // Start is called before the first frame update
-    void Start()
+    // Starts game 
+    public void StartGame(int difficulty)
     {
         isGameActive = true;
         StartCoroutine(SpawnObstacle());
+        spawnInterval /= difficulty;
         StartCoroutine(SpawnHealth());
         score = 0;
         lives = 3;
         UpdateScore(0);
         UpdateLives(0);
+        player.gameObject.SetActive(true);
+        titleScreen.gameObject.SetActive(false);
     }
 
+    //Stops game if player runs out of lives
     private void Update()
     {
         if(lives == -1)
@@ -41,17 +47,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Spawns random obstacles at a set interval
     IEnumerator SpawnObstacle()
     {
         while (isGameActive)
         {
-            spawnInterval = Random.Range(1f, 2f);
             yield return new WaitForSeconds(spawnInterval);
             int index = Random.Range(0, obstacles.Count);
             Instantiate(obstacles[index]);
         }
     }
 
+    //Spawns a health object every 25 seconds
     IEnumerator SpawnHealth()
     {
         while (isGameActive)
@@ -62,12 +69,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Updates the score on screen
     public void UpdateScore(int scoreToAdd)
     {
         scoreText.text = "Score: " + score;
         score += scoreToAdd;
     }
 
+    //Updates health on screen
     public void UpdateLives(int lifeMod)
     {
         lifeText.text = "Lives: " + lives;
@@ -75,6 +84,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Updated health by" + lifeMod);
     }
 
+    //Game ends and restart option shows up
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
@@ -83,6 +93,7 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(true);
     }
 
+    //Restarts the game
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

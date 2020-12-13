@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float speed = 15f;
+    [SerializeField] float speed = 15f;
     private float xRange = 10f;
     private float spawnPosZ = 20f;
     private GameManager gameManager;
@@ -12,12 +12,12 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         transform.position = SpawnRandomPosition();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Updates score when obstacle goes out of bounds
+    void FixedUpdate()
     {  
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
             if (transform.position.z < -14 && gameManager.isGameActive)
             {

@@ -12,18 +12,19 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI lifeText;
     public TextMeshProUGUI gameOverText;
+    public ParticleSystem explosion;
     private int score;
     private int damage;
-    public int lives;
-    private float spawnInterval = 1.5f;
-    private float healthSpawnInterval;
+    private int lives;
+    [SerializeField] float spawnInterval = 1.5f;
+    [SerializeField] static float healthSpawnInterval = 25;
     public bool isGameActive;
     public Button restartButton;
     public GameObject player;
     public GameObject titleScreen;
 
 
-    // Starts game 
+    // Starts game at certain difficulty
     public void StartGame(int difficulty)
     {
         isGameActive = true;
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Stops game if player runs out of lives
-    private void Update()
+    private void LateUpdate()
     {
         if(lives == -1)
         {
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         while (isGameActive)
         {
-            healthSpawnInterval = 25f;
+            healthSpawnInterval = 25;
             yield return new WaitForSeconds(healthSpawnInterval);
             Instantiate(healthPrefab);
         }
@@ -86,16 +87,18 @@ public class GameManager : MonoBehaviour
 
     //Game ends and restart option shows up
     public void GameOver()
-    {
+    {     
         gameOverText.gameObject.SetActive(true);
+        Instantiate(explosion, player.transform.position, Quaternion.identity);
         isGameActive = false;
         Destroy(GameObject.Find("Player"));
         restartButton.gameObject.SetActive(true);
     }
 
-    //Restarts the game
+    //Loads active scene to restart game
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }

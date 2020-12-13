@@ -6,19 +6,25 @@ public class RepeatRoad : MonoBehaviour
 {
     public Vector3 startPos;
     private float repeatLength;
-    public float speed = 15;
+    private float speed = 15;
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
         repeatLength = GetComponent<BoxCollider>().size.z * 3;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
+    // Repeats road for seamless movement in game
     void Update()
     {    
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            if (gameManager.isGameActive)
+            {
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            }
             if (transform.position.z < startPos.z - repeatLength)
             {
                 transform.position = startPos;

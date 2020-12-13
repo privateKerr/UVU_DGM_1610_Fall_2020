@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10f;
-    public float hInput;
-    public float vInput;
-    public float xRange = 9;
+    [SerializeField] float speed = 10f;
+    private float hInput;
+    private float vInput;
+    private float xRange = 9;
     private GameManager gameManager;
-    public bool hasPowerUp;
-
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameManager.isGameActive)
         {
@@ -52,16 +50,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit(Collider collider)
     {
-
+        //Takes away health on obstacle collision
         if (collider.gameObject.CompareTag("Obstacle"))
         {
             Destroy(collider.gameObject);
             gameManager.UpdateLives(-1);
             Debug.Log("Collided with obstacle");
         }
+
+        //Adds health in game manager on health collision
         if (collider.gameObject.CompareTag("Health"))
         {
             Destroy(collider.gameObject);
@@ -69,8 +68,5 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collided with health");
         }
     }
-
-
-
-    
+   
 }

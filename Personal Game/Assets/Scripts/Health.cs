@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float speed = 15f;
+    [SerializeField] float speed = 15f;
     private float xRange = 10f;
     private float spawnPosZ = 20f;
     private GameManager gameManager;
@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
         transform.position = SpawnRandomPosition();
     }
 
-    // Update is called once per frame
+    // Destroys health when passing out of bounds
     void Update()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerControllerX : MonoBehaviour
 {
-    public float speed = 20f;
-    public float rotationSpeed = 20f;
-    public float verticalInput;
+    [SerializeField] float speed = 20f;
+    private float rotationSpeed = 20f;
+    private float verticalInput;
 
     // Start is called before the first frame update
     void Start()

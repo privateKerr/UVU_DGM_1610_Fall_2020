@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    public float speed = 5f;
+    [SerializeField] float speed = 5f;
     private PlayerController playerControllerScript;
     private float leftBound = -15;
 

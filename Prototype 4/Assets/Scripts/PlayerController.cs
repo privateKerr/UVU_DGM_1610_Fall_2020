@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
-    private float powerUpStr = 15.0f;
+    [SerializeField] float powerUpStr = 15.0f;
 
     public GameObject powerUpIndicator;
 

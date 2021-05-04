@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] static float horsePower;
-    private float turnSpeed = 100f;
+    [SerializeField] float turnSpeed = 100f;
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody playerRb;
